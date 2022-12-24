@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import HomePage from "./Pages/HomePage";
+import Alert from "./Components/Alert";
+import { ThemeProvider } from "styled-components";
 
+import { useTheme } from "./Context/ThemeContext";
+import { GlobalStyles } from "./Styles/global";
+import { Route, Routes } from "react-router-dom";
 function App() {
+  const { theme } = useTheme();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Alert />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </ThemeProvider>
+    </>
   );
 }
 
