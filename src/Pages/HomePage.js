@@ -6,6 +6,7 @@ import TypingBox from "../Components/TypingBox";
 function HomePage() {
   return (
     <div className="canvas">
+      
       <Header />
       <TypingBox />
       <Footer />
