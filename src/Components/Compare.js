@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTheme } from "../Context/ThemeContext";
 import { Button, Modal, TextField } from "@mui/material";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "../Context/AlertContext";
@@ -29,7 +29,7 @@ function Compare() {
   const navigate = useNavigate();
 
   const [user] = useAuthState(auth);
-  
+
   const handleModal = () => {
     if (user) setOpen(true);
     else {
