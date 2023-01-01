@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Graph = () => {
+const Chart = () => {
   return (
-    <div>Graph</div>
+    <div>Chart</div>
   )
 }
 
-export default Graph
+export default Chart
