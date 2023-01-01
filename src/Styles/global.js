@@ -29,7 +29,7 @@ body::-webkit-scrollbar{
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
     gap: 0.5rem;
-    padding: 1rem;
+    padding: 2.5rem;
     width: 100vw;
     align-items: center;
 }

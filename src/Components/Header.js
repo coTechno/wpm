@@ -1,16 +1,19 @@
 import React from 'react'
+import Account from './Account'
+import Compare from './Compare'
+
 
 function Header() {
   return (
     <div className='header'>
       <div className="logo">
         <span>
-          LOGO
+          <img style={{height: '4.3rem'}} src='https://img.icons8.com/bubbles/2x/000000/keyboard.png' alt="logo" />
         </span>
-        {/* compare Button */}
+        <Compare />
       </div>
       <div className="icons">
-        {/* account icon */}
+        <Account />
       </div>
     </div>
   )

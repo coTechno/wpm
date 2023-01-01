@@ -14,7 +14,6 @@ export const ThemeContextProvider = ({children}) => {
         setTheme,
         defaultTheme
     };
-
     return (<ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>)
 }
 

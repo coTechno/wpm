@@ -14,7 +14,7 @@ const lightTheme = {
     stats: 'blue'
 }
 
-const luna = {
+const material = {
     label: 'Luna',
     background: '#18272f',
     title: '#ffffff',
@@ -25,5 +25,5 @@ const luna = {
 export const themeOptions = [
     {value: darkTheme, label: 'Dark'},
     {value: lightTheme, label: 'Light'},
-    {value: luna, label: 'Luna'}
+    {value: material, label: 'Material'}
 ];
