@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle } from "@material-ui/core";
+import { Dialog, DialogTitle } from "@mui/material";
 import React, { createRef, useEffect, useMemo, useRef, useState } from "react";
 import { useTestMode } from "../Context/TestMode";
 import Result from "./Result";
