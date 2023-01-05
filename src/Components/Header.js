@@ -2,7 +2,7 @@ import React from "react";
 // import Account from "./Account";
 // import Compare from "./Compare";
 
-function Header() {
+const Header = ()=> {
   return (
     <div className="header">
       <div className="logo">
