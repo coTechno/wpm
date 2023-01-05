@@ -30,7 +30,7 @@ const useStyles = makeStyles(()=>({
 }))
 
 
-const AccountIcon = () => {
+const Account = () => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(0);
 
@@ -67,6 +67,7 @@ const AccountIcon = () => {
     const handleAccountIconClick = ()=>{
 
         if(user){
+            console.log(user);
             navigate('/user');
         }
         else{
@@ -150,4 +151,4 @@ const AccountIcon = () => {
   )
 }
 
-export default AccountIcon
+export default Account

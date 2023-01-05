@@ -1,32 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import Graph from '../Components/Graph';
+import Chart from '../Components/Chart';
 import { useTheme } from '../Context/ThemeContext';
 import { db, auth} from '../firebaseConfig';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { CircularProgress } from '@material-ui/core';
+// import CircularProgress from '@mui/material/CircularProgress';
+// import { CircularProgress } from '@mui/material';
 
 const UserPage = () => {
 
     const [data, setData] = useState([]);
-    const [graphData, setGraphData] = useState([]);
+    const [chartData, setChartData] = useState([]);
     const [user, loading] = useAuthState(auth);
     const [dataLoading, setDataLoading] = useState(true);
     const {theme} = useTheme();
 
     const fetchUserData = () => {
-        const resultRef = db.collection('Results');
+        const resultRef = db.collection('wpmData');
         let tempData = [];
-        let tempGraphData = [];
+        let tempChartData = [];
         const {uid} = auth.currentUser;
+        console.log(uid);
         resultRef.where('userId','==',uid).orderBy('timeStamp','desc').get().then(snapshot => {
             snapshot.docs.forEach(doc => {
                 tempData.push({...doc.data()});
-                tempGraphData.push([doc.data().timeStamp,doc.data().wpm]);
+                tempChartData.push([doc.data().timeStamp,doc.data().wpm]);
             })
             setData(tempData);
-            setGraphData(tempGraphData.reverse());
+            setChartData(tempChartData.reverse());
             setDataLoading(false);
         });
     }
@@ -38,7 +40,7 @@ const UserPage = () => {
     if(loading || dataLoading){
         return (
             <div className="centre-of-screen">
-                <CircularProgress size={200} color={theme.title} />
+                {/* <CircularProgress size={200} color={theme.title} /> */}
             </div>
         );
     }
@@ -50,7 +52,7 @@ const UserPage = () => {
                     <AccountCircleIcon style={{display:'block', transform:'scale(6)', margin: 'auto', marginTop: '3.5rem'}} />
                 </div>
                 <div className="info">
-                    <div className="email" style={{width: 'auto'}}>{user.email}</div>
+                    <div className="email" style={{width: 'auto'}}>{user.email.split('@')[0]}</div>
                     <div className="joined-on">{user.metadata.creationTime}</div>
                 </div>
             </div>
@@ -59,8 +61,8 @@ const UserPage = () => {
             </div>
         </div>
 
-        <div className="result-graph">
-            <Graph graphData={graphData} type='date' />
+        <div className="result-Chart">
+            <Chart chartData={chartData} type='date' />
         </div>
         <div className="table">
             <TableContainer style={{margin: '30rem'}}>

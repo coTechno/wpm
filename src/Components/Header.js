@@ -1,6 +1,6 @@
 import React from "react";
-// import Account from "./Account";
-// import Compare from "./Compare";
+import Account from "./Account";
+import Compare from "./Compare";
 
 const Header = ()=> {
   return (
@@ -13,10 +13,10 @@ const Header = ()=> {
             alt="logo"
           />
         </span>
-        {/* <Compare /> */}
+        <Compare />
       </div>
       <div className="icons">
-        {/* <Account /> */}
+        <Account />
       </div>
     </div>
   );

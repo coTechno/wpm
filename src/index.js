@@ -7,7 +7,7 @@ import { AlertContextProvider } from "./Context/AlertContext";
 import { TestModeContextProvider } from "./Context/TestMode";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <ThemeContextProvider>
       <AlertContextProvider>
         <TestModeContextProvider>
@@ -17,5 +17,5 @@ root.render(
         </TestModeContextProvider>
       </AlertContextProvider>
     </ThemeContextProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
