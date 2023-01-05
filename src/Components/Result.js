@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useAlert } from '../Context/AlertContext';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, db } from "../firebaseConfig";
+// import { auth, db } from "../firebaseConfig";
+import {db } from "../firebaseConfig";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import Chart from "./Chart";
 
 
 const Result = ({ wpm, accuracy, chartData, correctChars, incorrectChars, extraChars, missedChars, resetTest }) => {
 
-    const [user] = useAuthState(auth);
+    // const [user] = useAuthState(auth);
     const { setAlert } = useAlert();
     var timeSet = new Set();
     const newChart = chartData.filter((i) => {
@@ -20,12 +21,12 @@ const Result = ({ wpm, accuracy, chartData, correctChars, incorrectChars, extraC
 
 
     const pushResultsToDB = async () => {
-        const resultsRef = db.collection('Results');
-        const {uid} = auth.currentUser;
+        const resultsRef = db.collection('wpmData');
+        // const {uid} = auth.currentUser;
         if(!isNaN(accuracy)){
             // push resullts to db
             await resultsRef.add({
-                userId: uid,
+                // userId: uid,
                 wpm: wpm,
                 accuracy: accuracy,
                 characters: `${correctChars}/${incorrectChars}/${missedChars}/${extraChars}`,
@@ -46,16 +47,16 @@ const Result = ({ wpm, accuracy, chartData, correctChars, incorrectChars, extraC
             });
         }
     }
-    useEffect(() => {
-        if (user) pushResultsToDB();
-        else {
-            setAlert({
-                open: true,
-                type: 'warning',
-                message: 'Login to Save Results!'
-            })
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (user) pushResultsToDB();
+    //     else {
+    //         setAlert({
+    //             open: true,
+    //             type: 'warning',
+    //             message: 'Login to Save Results!'
+    //         })
+    //     }
+    // }, []);
 
 
     return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTheme } from "../Context/ThemeContext";
 import { Button, Modal, TextField } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "@mui/material";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "../Context/AlertContext";

@@ -2,7 +2,7 @@ import React from 'react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { AppBar, Box, Modal, Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
 import Login from './Login';
 import SignUp from './Signup';
 import LogoutIcon from '@mui/icons-material/Logout';

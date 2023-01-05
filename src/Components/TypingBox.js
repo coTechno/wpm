@@ -22,7 +22,7 @@ const TypingBox = () => {
   const [incorrectChars, setIncorrectChars] = useState(0);
   const [extraChars, setExtraChars] = useState(0);
   const [missedChars, setMissedChars] = useState(0);
-  const [graphData, setGraphData] = useState([]);
+  const [chartData, setchartData] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [wordsArray, setWordsArray] = useState(() => {
     if (testMode === "words") return randomWords(testWords);
@@ -78,7 +78,7 @@ const TypingBox = () => {
     clearInterval(intervalId);
     setCountDown(testTime);
     if (testMode === "words") setCountDown(180);
-    setGraphData([]);
+    setchartData([]);
     setCorrectChars(0);
     setIncorrectChars(0);
     setCorrectWords(0);
@@ -95,7 +95,7 @@ const TypingBox = () => {
     function timer() {
       setCountDown((prevCountDown) => {
         setCorrectChars((correctChars) => {
-          setGraphData((data) => {
+          setchartData((data) => {
             const startTime = testMode === "words" ? 180 : testTime;
             return [
               ...data,
@@ -232,7 +232,7 @@ const TypingBox = () => {
   };
 
   const calculateWPM = () => {
-    return Math.round(correctChars / 5 / ((graphData[graphData.length - 1][0] + 1) / 60));
+    return Math.round(correctChars / 5 / ((chartData[chartData.length - 1][0] + 1) / 60));
   };
 
   const calculateAccuracy = () => {
@@ -254,7 +254,7 @@ const TypingBox = () => {
       let random = randomWords(100);
       setWordsArray(random);
     }
-    setGraphData([]);
+    setchartData([]);
     setCorrectChars(0);
     setIncorrectChars(0);
     setCorrectWords(0);
@@ -279,7 +279,7 @@ const TypingBox = () => {
           resetTest={resetTest}
           wpm={calculateWPM()}
           accuracy={calculateAccuracy()}
-          graphData={graphData}
+          chartData={chartData}
           correctChars={correctChars}
           incorrectChars={incorrectChars}
           extraChars={extraChars}
