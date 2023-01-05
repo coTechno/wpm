@@ -42,7 +42,7 @@ const Signup = ({ handleClose }) => {
         if (await checkUserExists()) {
             auth.createUserWithEmailAndPassword(email, password).then(async (res) => {
 
-                const ref = await db.collection('usenames').doc(`${username}`).set({
+                const ref = await db.collection('usernames').doc(`${username}`).set({
                     uid: res.user.uid
                 }).then(response => {
                     setAlert({

@@ -48,15 +48,17 @@ function Compare() {
 
     const ref = db.collection('usernames').doc(`${username}`);
     const response = await ref.get()
-    console.log(response);
     if(response.exists){
         if(user.uid === response.data().uid) return false;
     }
     return response.exists;
   };
-
+;
   const handleSubmit = async () => {
-    if (await checkUserExists()) navigate(`/compare/${username}`);
+    if (await checkUserExists()) {
+      navigate(`/compare/${username}`);
+      // console.log(username)
+    }
     else {
       setAlert({
         open: true,

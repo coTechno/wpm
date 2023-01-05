@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import Chart from '../Components/Chart';
+import Graph from '../Components/Graph';
 import { useTheme } from '../Context/ThemeContext';
 import { db, auth} from '../firebaseConfig';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -21,7 +21,7 @@ const UserPage = () => {
         let tempData = [];
         let tempChartData = [];
         const {uid} = auth.currentUser;
-        console.log(uid);
+        // console.log(uid);
         resultRef.where('userId','==',uid).orderBy('timeStamp','desc').get().then(snapshot => {
             snapshot.docs.forEach(doc => {
                 tempData.push({...doc.data()});
@@ -62,7 +62,7 @@ const UserPage = () => {
         </div>
 
         <div className="result-Chart">
-            <Chart chartData={chartData} type='date' />
+            <Graph chartData={chartData} type='date' />
         </div>
         <div className="table">
             <TableContainer style={{margin: '30rem'}}>
@@ -76,8 +76,8 @@ const UserPage = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {data.map(i => (
-                            <TableRow>
+                        {data.map((i, idx) => (
+                            <TableRow key={idx}>
                                 <TableCell style={{color: theme.title, textAlign: 'center'}}>{i.wpm}</TableCell>
                                 <TableCell style={{color: theme.title, textAlign: 'center'}}>{i.accuracy}</TableCell>
                                 <TableCell style={{color: theme.title, textAlign: 'center'}}>{i.characters}</TableCell>

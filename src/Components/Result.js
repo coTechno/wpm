@@ -3,7 +3,7 @@ import { useAlert } from '../Context/AlertContext';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from "../firebaseConfig";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import Chart from "./Chart";
+import Graph from "./Graph";
 
 
 const Result = ({ wpm, accuracy, chartData, correctChars, incorrectChars, extraChars, missedChars, resetTest }) => {
@@ -74,7 +74,7 @@ const Result = ({ wpm, accuracy, chartData, correctChars, incorrectChars, extraC
             </div>
 
             <div className="right-stats">
-                <Chart chartData={newChart} />
+                <Graph chartData={newChart} />
             </div>
         </div>
     );

@@ -67,7 +67,7 @@ const Account = () => {
     const handleAccountIconClick = ()=>{
 
         if(user){
-            console.log(user);
+            // console.log(user);
             navigate('/user');
         }
         else{

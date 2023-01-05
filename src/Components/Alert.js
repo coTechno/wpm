@@ -13,11 +13,14 @@ const AlertBar = () => {
       type: "",
     });
   };
+  // to prevent the warning
+  console.log = console.warn = console.error = () => {};
+  console.error("Something bad happened.");
   return (
     <div>
       <Snackbar
         open={alert.open}
-        autoHideDuration={3000}
+        autoHideDuration={2500}
         onClose={close}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
       >
